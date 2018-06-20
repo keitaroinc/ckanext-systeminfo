@@ -1,0 +1,70 @@
+<nav aria-label="Page navigation">
+  {% if total % per_page == 0 %}
+  {% set end = (total / per_page)|int %}
+  {% else %}
+  {% set end = ((total / per_page) + 1)|int %}
+  {% endif %}
+
+  {% set params = request.params.items() %}
+  {% set controller = 'ckanext.edsnews.controllers.edsnews:EdsnewsController' %}
+  {% set action = 'news_index' %}
+
+
+  {% set pagination_limit = c.pagination_limit %}
+  {% if pagination_limit > end %}
+    {% set pagination_limit = end %}
+  {% elif pagination_limit < 1 %}
+    {% set pagination_limit = end %}
+  {% endif %}
+
+  {% if pagination_limit % 2 == 0 %}
+    {% set limit_left = (pagination_limit / 2)|int %}
+    {% set limit_right = (pagination_limit / 2)|int %}
+  {% else %}
+    {% set limit_left = ((pagination_limit / 2) + 1)|int %}
+    {% set limit_right = (pagination_limit - limit_left)|int %}
+  {% endif %}
+
+
+  {% if end > 1 %}
+  {# Only show pagination if there are more than two pages of results. #}
+  <ul class="pagination">
+
+    {% if current != 1 %}<li><a href="{{ h.edsnews_get_current_url(1, params, controller, action, exclude_param='page') }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>{% endif %}
+    {% if current != 1 %}<li><a href="{{ h.edsnews_get_current_url(current - 1, params, controller, action, exclude_param='page') }}" aria-label="Previous"><span aria-hidden="true">&lsaquo;</span></a></li>{% endif %}
+
+    {% set start = current - limit_right  %}
+    {% set offset = current + limit_left %}
+
+
+    {% if current - limit_right < 1 %}
+      {% set start = 1 %}
+      {% set offset = pagination_limit + 1%}
+    {% endif %}
+
+    {% if current + limit_left > end %}
+      {% set start = end - pagination_limit + 1 %}
+      {% set offset = end + 1 %}
+    {% endif %}
+
+    {% if current == 1 %}
+      {% set start = 1 %}
+      {% set offset = pagination_limit + 1 %}
+    {% endif %}
+
+    {% if current == end %}
+      {% set start = end - pagination_limit + 1 %}
+      {% set offset = end +1 %}
+    {% endif %}
+
+
+    {% for index in range(start, offset) %}
+    <li {% if index == current %} class="active"{% endif %}><a href="{{ h.edsnews_get_current_url(index, params, controller, action, exclude_param='page') }}">{{ index }}</a></li>
+    {% endfor %}
+
+    {% if current < end %}<li><a href="{{ h.edsnews_get_current_url(current + 1, params, controller, action, exclude_param='page') }}" aria-label="Next"><span aria-hidden="true">&rsaquo;</span></a></li>{% endif %}
+    {% if current < end %}<li><a href="{{ h.edsnews_get_current_url(end, params, controller, action, exclude_param='page') }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>{% endif %}
+
+  </ul>
+  {% endif %}
+</nav>

@@ -1,0 +1,201 @@
+# Danish (Denmark) translations for ckanext-edsnews.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the ckanext-edsnews
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-edsnews 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-06-07 12:06+0200\n"
+"PO-Revision-Date: 2017-05-18 11:27+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: da_DK\n"
+"Language-Team: da_DK <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: ckanext/edsnews/controllers/edsnews.py:74
+msgid "The news was created successfully."
+msgstr "Nyheden blev oprettet."
+
+#: ckanext/edsnews/controllers/edsnews.py:121
+msgid "The news was updated successfully."
+msgstr "Nyheden blev opdateret"
+
+#: ckanext/edsnews/controllers/edsnews.py:162
+msgid "News not found"
+msgstr "Nyheden blev ikke fundet"
+
+#: ckanext/edsnews/controllers/edsnews.py:173
+msgid "News was removed successfully."
+msgstr "Nyheden blev fjernet"
+
+#: ckanext/edsnews/logic/activity_streams.py:23
+msgid "{actor} updated the news {news}"
+msgstr ""
+
+#: ckanext/edsnews/logic/activity_streams.py:26
+msgid "{actor} created the news {news}"
+msgstr ""
+
+#: ckanext/edsnews/logic/auth.py:17
+msgid "User not authorized to create news"
+msgstr "Brugeren har ikke rettigheder til at oprette nyheder"
+
+#: ckanext/edsnews/logic/auth.py:31
+msgid "User not authorized to update news"
+msgstr "Brugeren har ikke rettigheder til at opdatere nyheder"
+
+#: ckanext/edsnews/logic/auth.py:45
+msgid "User not authorized to patch news"
+msgstr "Brugeren har ikke rettigheder til at rette nyheder"
+
+#: ckanext/edsnews/logic/auth.py:58
+msgid "User not authorized to delete news"
+msgstr "Brugeren har ikke rettigehder til at slette nyheder"
+
+#: ckanext/edsnews/logic/auth.py:70
+msgid "User not authorized to manage subscriptions"
+msgstr "Brugeren har ikke adgang til at administrere medlemsskaber"
+
+#: ckanext/edsnews/logic/schema.py:46
+msgid "Expiration date is in the past"
+msgstr "Udløbsdato er overskredet"
+
+#: ckanext/edsnews/logic/schema.py:48
+msgid "Incorrect expiration date format, should be YYYY-MM-DD"
+msgstr "Udløbsdato er ikke angivet korrekt. Formatet er YYYY-MM-DD"
+
+#: ckanext/edsnews/logic/schema.py:51
+msgid "Expiration date can not be in past"
+msgstr "Udløbsdatoen kan ikke være før dags dato"
+
+#: ckanext/edsnews/logic/schema.py:62
+msgid "Incorrect type, should be boolean"
+msgstr "Type er ikke korrekt, skal være boolean"
+
+#: ckanext/edsnews/logic/validators.py:16
+#, fuzzy
+#| msgid "News not found"
+msgid "Not found"
+msgstr "Nyheden blev ikke fundet"
+
+#: ckanext/edsnews/logic/validators.py:16
+#: ckanext/edsnews/templates/edsnews/news_create.html:24
+#: ckanext/edsnews/templates/edsnews/news_create.html:55
+#: ckanext/edsnews/templates/edsnews/news_list.html:16
+#: ckanext/edsnews/templates/edsnews/news_list.html:49
+#: ckanext/edsnews/templates/edsnews/news_page.html:16
+#: ckanext/edsnews/templates/edsnews/news_page.html:70
+#: ckanext/edsnews/templates/edsnews/news_update.html:25
+#: ckanext/edsnews/templates/edsnews/news_update.html:57
+msgid "News"
+msgstr "Nyheder"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:25
+msgid "Add news item"
+msgstr "Tilføj nyhedselement"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:29
+#: ckanext/edsnews/templates/edsnews/news_list.html:24
+msgid "Add News Item"
+msgstr "Tilføj nyhedselement"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:33
+#: ckanext/edsnews/templates/edsnews/news_update.html:35
+msgid "Title"
+msgstr "Titel"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:33
+#: ckanext/edsnews/templates/edsnews/news_update.html:35
+msgid "News item title"
+msgstr "Nyhedstitel"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:34
+#: ckanext/edsnews/templates/edsnews/news_update.html:36
+msgid "Content"
+msgstr "Indhold"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:34
+msgid "Content of the news"
+msgstr "Nyhedsindhold"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:35
+#: ckanext/edsnews/templates/edsnews/news_update.html:37
+msgid "Photo"
+msgstr "Foto"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:35
+#: ckanext/edsnews/templates/edsnews/news_update.html:37
+msgid "URL to image file"
+msgstr "URL til billedefil"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:38
+#: ckanext/edsnews/templates/edsnews/news_update.html:40
+msgid "Expiration Date"
+msgstr "Udløbsdato"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:45
+#: ckanext/edsnews/templates/edsnews/news_update.html:47
+msgid "Cancel"
+msgstr "Fortryd"
+
+#: ckanext/edsnews/templates/edsnews/news_create.html:46
+#: ckanext/edsnews/templates/edsnews/news_update.html:48
+msgid "Save"
+msgstr "Gem"
+
+#: ckanext/edsnews/templates/edsnews/news_list.html:33
+msgid "No news found."
+msgstr "Ingen nyheder blev fundet"
+
+#: ckanext/edsnews/templates/edsnews/news_list.html:58
+msgid "Recent News"
+msgstr "Seneste nyheder"
+
+#: ckanext/edsnews/templates/edsnews/news_list.html:68
+msgid "No news are created in the system."
+msgstr "Ingen nyheder er oprettet i systemet."
+
+#: ckanext/edsnews/templates/edsnews/news_page.html:40
+#: ckanext/edsnews/templates/edsnews/snippets/news_list_item.html:22
+msgid "No content provided."
+msgstr "Der er intet indhold tilgængeligt"
+
+#: ckanext/edsnews/templates/edsnews/news_page.html:49
+#: ckanext/edsnews/templates/edsnews/news_update.html:27
+#: ckanext/edsnews/templates/edsnews/news_update.html:31
+#: ckanext/edsnews/templates/edsnews/snippets/news_list_item.html:34
+msgid "Edit"
+msgstr "Redigér"
+
+#: ckanext/edsnews/templates/edsnews/news_page.html:55
+#: ckanext/edsnews/templates/edsnews/snippets/news_list_item.html:40
+msgid "Delete"
+msgstr "Slet"
+
+#: ckanext/edsnews/templates/edsnews/news_update.html:36
+msgid "Content of the news item"
+msgstr "Nyhedsindhold"
+
+#: ckanext/edsnews/templates/edsnews/snippets/news_list_item.html:26
+msgid "Read mode"
+msgstr "Læsetilstand"
+
+#: ckanext/edsnews/templates/edsnews/snippets/sidebar_description.html:1
+msgid ""
+"Here you will find news relevant to users of the Energy Data Service. "
+"This could be news about events, datasets or how data has been applied. "
+"You will also find news about features in Energi Data Service, and about "
+"new versions."
+msgstr ""
+"Her finder du nyheder, som er relevant for brugere af "
+"Energidataservice. Dette kan være nyheder om events, datasæt eller hvordan"
+" data er blevet tilføjet. Du kan også finde nyheder om features i "
+"Energidataservice og om nye versioner."
+

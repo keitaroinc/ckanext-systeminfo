@@ -1,0 +1,61 @@
+{% resource 'edsnews/jquery-ui-datepicker.css' %}
+{% resource 'edsnews/news.css' %}
+{% resource 'edsnews/jquery-ui.js' %}
+{% resource 'edsnews/news.js' %}
+{% import 'macros/form.html' as form %}
+{% extends 'page.html' %}
+
+{% block toolbar %}
+{{ super() }}
+{% endblock %}
+
+{% block flash %}
+{{ super() }}
+{% endblock %}
+
+{% set errors = errors or {} %}
+{% set data = data or {} %}
+
+{% set controller = 'ckanext.edsnews.controllers.edsnews:EdsnewsController' %}
+{% set cancel_url = h.url_for('news_index') %}
+{% set action_url = h.url_for('news_create') %}
+
+{% block breadcrumb_content %}
+<li>{{ h.nav_link(_('News'), controller=controller, action='news_index', highlight_actions = 'new index') }}</li>
+<li class="active">{% link_for _('Add news item'), controller=controller, action='news_create' %}</li>
+{% endblock %}
+
+{% block primary_content %}
+<h1 class="page-heading">{{_('Add News Item')}}</h1>
+<form id="add-news-form" method="post" action="{{ action_url }}">
+    <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-6">
+            {{ form.input('title', id='news-item-name', label=_('Title'), value=data.title, error=errors.title, placeholder=_('News item title'), classes=['control-full ', 'control-large'], is_required=true) }}
+            {{ form.markdown('content', id='news-item-content', label=_('Content'), attrs={'rows': 15, 'class': 'form-control'}, value=data.content, error=errors.content, placeholder=_('Content of the news')) }}
+            {{ form.input('image_url', id='news-item-photo', value=data.image_url, error=errors.image_url, label=_('Photo'), placeholder=_('URL to image file')) }}
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            {{ form.input('expiration_date', id='news-item-expiration-date-input', value=data.expiration_date, error=errors.expiration_date, classes=['control-full ', 'control-large'], is_required=true, label=_('Expiration Date')) }}
+            <div class="form-group">
+                <div class="date-picker" id="news-item-expiration-date"></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <a class="btn pull-left btn-danger" href="{{ cancel_url }}">{{ _('Cancel') }}</a>
+        <button class="btn btn-primary" name="save" type="submit">{{_('Save')}}</button>
+    </div>
+</form>
+{% endblock %}
+
+{% block secondary_content %}
+<div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+        <span class="fa fa-newspaper-o"></span>
+        <span class="fa-label">{{ _('News') }}</span>
+    </h2>
+    <div class="module-content">
+        <p>{% snippet 'edsnews/snippets/sidebar_description.html' %}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% resource 'edsnews/news.css' %}
+{% import 'macros/form.html' as form %}
+{% extends 'page.html' %}
+
+{% block toolbar %}
+{{ super() }}
+{% endblock %}
+
+{% block flash %}
+{{ super() }}
+{% endblock %}
+
+{% set controller = 'ckanext.edsnews.controllers.edsnews:EdsnewsController' %}
+
+{% block breadcrumb_content %}
+<li class="active">{{ h.nav_link(_('News'), controller=controller, action='news_index', highlight_actions = 'new index') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+
+<div class="module">
+    <div class="module-content">
+        {% if h.check_access('news_create', {}) %}
+        {% link_for _('Add News Item'), controller=controller, action='news_create', class_='btn btn-primary', icon='plus' %}
+        {% endif %}
+
+        {% if news_list | length > 0 %}
+        {% for news in news_list %}
+        {% snippet 'edsnews/snippets/news_list_item.html', news=news %}
+        {% endfor %}
+        {% else %}
+        <div class="module-content">
+            <p>{{ _('No news found.') }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% block events_pagination %}
+{{h.snippet('edsnews/snippets/pagination.html', current=c.page, per_page=c.limit, total=c.total)}}
+{% endblock %}
+
+{% endblock %}
+
+{% block secondary_content %}
+<div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+        <span class="fa fa-newspaper-o"></span>
+        <span class="fa-label">{{ _('News') }}</span>
+    </h2>
+    <div class="module-content">
+        <p>{% snippet 'edsnews/snippets/sidebar_description.html' %}</p>
+    </div>
+</div>
+<div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+        <span class="fa fa-clock-o"></span>
+        <span class="fa-label">{{_('Recent News')}}</span>
+    </h2>
+    <div class="module-content">
+        <ul class="list-recent">
+            {% set recent_news = h.edsnews_get_recent_news() %}
+            {% if recent_news %}
+            {% for news in recent_news %}
+            <li><span class="fa fa-newspaper-o"></span><a href="{{h.url_for('news_show', id=news.id)}}">{{news.title}}</a></li>
+            {% endfor %}
+            {% else %}
+            {{ _('No news are created in the system.') }}
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

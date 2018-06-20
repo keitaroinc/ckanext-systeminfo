@@ -1,0 +1,78 @@
+{% resource 'edsnews/news.css' %}
+{% import 'macros/form.html' as form %}
+{% extends 'page.html' %}
+
+{% block toolbar %}
+{{ super() }}
+{% endblock %}
+
+{% block flash %}
+{{ super() }}
+{% endblock %}
+
+{% set controller = 'ckanext.edsnews.controllers.edsnews:EdsnewsController' %}
+
+{% block breadcrumb_content %}
+<li>{{ h.nav_link(_('News'), controller=controller, action='news_index', highlight_actions = 'new index') }}</li>
+<li class="active">{% link_for _(news.title), controller=controller, action='news_show', id=news.id %}</li>
+{% endblock %}
+
+{% block primary_content %}
+
+<div class="news-item">
+
+      <h1 class="news-item-title">{{ news.title }}</h1>
+      <ul class="list-unstyled news-item-meta">
+            <li>
+                  <span class="fa fa-clock-o"></span>
+                  <span class="fa-label">{{ h.render_datetime(news.created_at, with_hours=True) }}</span>
+            </li>
+      </ul>
+      <div class="row">
+            <div class="col-md-6">
+                  {% if (news.image_url) %}
+                  <div class="thumbnail">
+                        <img class="img-responsive" src="{{ news.image_url }}" alt="">
+                  </div>
+                  {% endif %}
+                  <div class="news-item-content">
+                        {% if news.content %}
+                        <p>{{ h.render_markdown(news.content) }}</p>
+                        {% else %}
+                        <p>{{ _('No content provided.') }}</p>
+                        {% endif %}
+                  </div>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                  <ul class="list-inline news-item-actions">
+                        <li>
+                              {% if h.check_access('news_update', {}) %}
+                              {% set edit_url = h.url_for('news_update', id=news.id) %}
+                              <a href="{{edit_url}}" class="btn btn-default"><span class="sr-only">{{_('Edit')}}</span><span class="fa fa-pencil"></span></a>
+                              {% endif %}
+                        </li>
+                        <li>
+                              {% if h.check_access('news_delete', {}) %}
+                              {% set delete_url = h.url_for('news_delete', id=news.id) %}
+                              <a href="{{delete_url}}" class="btn btn-danger"><span class="sr-only">{{_('Delete')}}</span><span class="fa fa-trash"></span></a>
+                              {% endif %}
+                        </li>
+                  </ul>
+            </div>
+      </div>
+
+</div>
+
+{% endblock %}
+
+{% block secondary_content %}
+<div class="module module-narrow module-shallow">
+      <h2 class="module-heading">
+            <span class="fa fa-newspaper-o"></span>
+            <span class="fa-label">{{ _('News') }}</span>
+      </h2>
+      <div class="module-content">
+            <p>{% snippet 'edsnews/snippets/sidebar_description.html' %}</p>
+      </div>
+</div>
+{% endblock %}

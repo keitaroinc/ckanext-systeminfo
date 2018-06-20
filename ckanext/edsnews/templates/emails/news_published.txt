@@ -1,0 +1,41 @@
+Kære {{user_name}},
+
+Vi har netop offentliggjort følgende meddelelse om Energi Data Service.
+
+{{ news_item_title }}
+
+{{ '=' * news_item_title|length }}
+
+{{ news_item_content }}
+
+{{ '=' * news_item_title|length }}
+
+For at finde flere nyheder om {{site_title_dk}}, besøg venligst {{site_url}}.
+
+Hav en god dag.
+
+Med venlig hilsen,
+Energinet
+www.energinet.dk
+
+--------------------------------------------
+
+Dear {{ user_name }},
+
+We have just made the following announcement about Energy Data Service.
+
+{{ news_item_title }}
+
+{{ '=' * news_item_title|length }}
+
+{{ news_item_content }}
+
+{{ '=' * news_item_title|length }}
+
+To find more news about {{ site_title_en }}, please visit {{ site_url }}.
+
+Have a nice day.
+
+Kind regards,
+Energinet
+www.energinet.dk

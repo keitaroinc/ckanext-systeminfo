@@ -1,0 +1,1 @@
+.news-item:not(:last-child){margin-top:30px;padding-bottom:30px;border-bottom:1px solid #ddd}.news-item-title{margin-top:30px}.news-item-content{margin:15px 0}.news-item .thumbnail{padding:0;margin:20px 0;border-color:transparent}.thumbnail img{min-width:100%}.list-recent{padding-left:0;list-style:none;line-height:1.8}.list-recent a{padding:10px}

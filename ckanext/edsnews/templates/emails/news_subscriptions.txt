@@ -1,0 +1,29 @@
+Kære {{user_name}},
+
+Du har abonneret på Nyheder på Energy Data Service.
+
+Du vil nu modtage nyheder om Energi Data Service direkte i din indbakke.
+
+Ønsker du at ophøre med dit abonnement skal du afmelde det via Energi Data Service’s hjemmeside.
+
+Hav en god dag.
+
+Med venlig hilsen,
+Energinet
+www.energinet.dk
+
+--------------------------------------------
+
+Dear {{ user_name }},
+
+You have successfully subscribed to News on Energy Data Sevice.
+
+You will now receive news about Energy Data Service directly in your inbox.
+
+If you want to terminate your subscription, you must unsubscribe via website of Energy Data Service.
+
+Have a nice day.
+
+Kind regards,
+Energinet
+www.energinet.dk
