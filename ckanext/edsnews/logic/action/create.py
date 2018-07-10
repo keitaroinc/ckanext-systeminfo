@@ -98,7 +98,7 @@ def news_create(context, data_dict):
                 'site_title_en': config_option_show('ckan.site_title', 'en'),
                 'site_url': config.get('ckan.site_url'),
                 'news_item_title': out['title'],
-                'news_item_content': re.sub(r'<[^<]+?>', '', render_markdown(out['content'], True))}
+                'news_item_content': render_markdown(out['content'], True)}
 
         for u in users:
             if user_obj.id == u['subscriber_id']:

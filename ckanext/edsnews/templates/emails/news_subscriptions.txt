@@ -1,4 +1,4 @@
-Kære {{user_name}},
+<p>Kære {{user_name}},
 
 Du har abonneret på Nyheder på Energy Data Service.
 
@@ -26,4 +26,4 @@ Have a nice day.
 
 Kind regards,
 Energinet
-www.energinet.dk
+www.energinet.dk</p>

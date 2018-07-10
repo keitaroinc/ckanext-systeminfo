@@ -1,4 +1,5 @@
 import logging
+import re
 import smtplib
 import cgi
 from paste.deploy.converters import asbool
@@ -36,7 +37,7 @@ def send_email(content, to, subject, file=None):
        :rtype: string
        '''
 
-    msg = MIMEMultipart()
+    msg = MIMEMultipart('alternative')
 
     from_ = SMTP_FROM
 
@@ -47,7 +48,8 @@ def send_email(content, to, subject, file=None):
     msg['From'] = from_
     msg['To'] = ','.join(to)
 
-    msg.attach(MIMEText(content, 'plain', _charset='utf-8'))
+    msg.attach(MIMEText(content, 'html', _charset='utf-8'))
+    msg.attach(MIMEText(re.sub(r'<[^<]+?>', '', content), 'plain', _charset='utf-8'))
     if isinstance(file, cgi.FieldStorage):
         part = MIMEBase('application', 'octet-stream')
         part.set_payload(file.file.read())
