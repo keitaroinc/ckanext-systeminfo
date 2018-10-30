@@ -19,7 +19,7 @@ from ckanext.edsnews.emailer import send_email
 import ckanext.edsnews.helpers as helpers
 
 log = logging.getLogger(__name__)
-redirect = base.redirect
+redirect = toolkit.redirect_to
 
 
 def _get_context():
